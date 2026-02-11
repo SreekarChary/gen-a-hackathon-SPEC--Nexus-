@@ -15,7 +15,7 @@ CATEGORIES = {
         "target": "fraud_reported",
         "raw_file": "insurance_claims.csv",
         "junk_cols": ['_c39', 'policy_number', 'insured_zip', 'incident_location'],
-        "threshold": 0.25
+        "threshold": 0.2
     },
     "health": {
         "target": "Is_Fraudulent",
@@ -55,7 +55,7 @@ XGBOOST_PARAMS = {
     "random_state": 42,
     "use_label_encoder": False,
     "eval_metric": "logloss",
-    "scale_pos_weight": 2.0,
+    "scale_pos_weight": 4.0,
 }
 
 # ─── Train / Test Split ────────────────────────────────
