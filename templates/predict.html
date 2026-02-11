@@ -62,65 +62,57 @@
                 <div class="form-group">
                     <label for="number_of_vehicles_involved">Vehicles Involved</label>
                     <input type="number" id="number_of_vehicles_involved" name="number_of_vehicles_involved" value="1"
-                        min="1" max="10" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="bodily_injuries">Bodily Injuries (0-100)</label>
-                    <input type="number" id="bodily_injuries" name="bodily_injuries" value="0" min="0" max="100"
                         required>
                 </div>
 
                 <div class="form-group">
-                    <label for="witnesses">Witnesses (0-100)</label>
-                    <input type="number" id="witnesses" name="witnesses" value="0" min="0" max="100" required>
+                    <label for="bodily_injuries">Bodily Injuries</label>
+                    <input type="number" id="bodily_injuries" name="bodily_injuries" value="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="witnesses">Witnesses</label>
+                    <input type="number" id="witnesses" name="witnesses" value="0" required>
                 </div>
 
                 <div class="form-group">
                     <label for="total_claim_amount">Total Claim Amount (₹)</label>
-                    <input type="number" id="total_claim_amount" name="total_claim_amount" placeholder="e.g. 500000"
-                        min="0" max="100000000" required>
+                    <input type="number" id="total_claim_amount" name="total_claim_amount" required>
                 </div>
 
                 <div class="form-group">
                     <label for="injury_claim">Injury Claim Amount (₹)</label>
-                    <input type="number" id="injury_claim" name="injury_claim" placeholder="e.g. 50000" min="0"
-                        max="10000000" required>
+                    <input type="number" id="injury_claim" name="injury_claim" required>
                 </div>
 
                 <div class="form-group">
                     <label for="property_claim">Property Claim Amount (₹)</label>
-                    <input type="number" id="property_claim" name="property_claim" placeholder="e.g. 50000" min="0"
-                        max="10000000" required>
+                    <input type="number" id="property_claim" name="property_claim" required>
                 </div>
 
                 <div class="form-group">
                     <label for="vehicle_claim">Vehicle Claim Amount (₹)</label>
-                    <input type="number" id="vehicle_claim" name="vehicle_claim" placeholder="e.g. 400000" min="0"
-                        max="10000000" required>
+                    <input type="number" id="vehicle_claim" name="vehicle_claim" required>
                 </div>
 
                 <div class="form-group">
                     <label for="policy_annual_premium">Annual Premium (₹)</label>
-                    <input type="number" id="policy_annual_premium" name="policy_annual_premium"
-                        placeholder="e.g. 15000" min="0" max="10000000" required>
+                    <input type="number" step="0.01" id="policy_annual_premium" name="policy_annual_premium" required>
                 </div>
 
                 <div class="form-group">
                     <label for="policy_deductable">Policy Deductible (₹)</label>
-                    <input type="number" id="policy_deductable" name="policy_deductable" placeholder="e.g. 10000"
-                        min="0" max="1000000" required>
+                    <input type="number" id="policy_deductable" name="policy_deductable" required>
                 </div>
 
                 <div class="form-group">
                     <label for="umbrella_limit">Umbrella Limit (₹)</label>
-                    <input type="number" id="umbrella_limit" name="umbrella_limit" value="0" min="0" max="1000000000"
-                        required>
+                    <input type="number" id="umbrella_limit" name="umbrella_limit" value="0" required>
                 </div>
 
                 <div class="form-group">
                     <label for="age">Insured Age</label>
-                    <input type="number" id="age" name="age" min="18" max="100" required>
+                    <input type="number" id="age" name="age" required>
                 </div>
 
                 <div class="form-group">
@@ -146,7 +138,16 @@
 
                 <div class="form-group">
                     <label for="incident_state">Incident State</label>
-                    <input type="text" id="incident_state" name="incident_state" placeholder="e.g. OH">
+                    <select id="incident_state" name="incident_state" required>
+                        <option value="" disabled selected>Select State</option>
+                        <option value="TN">TN</option>
+                        <option value="UP">UP</option>
+                        <option value="DL">DL</option>
+                        <option value="MH">MH</option>
+                        <option value="WB">WB</option>
+                        <option value="GJ">GJ</option>
+                        <option value="RJ">RJ</option>
+                    </select>
                 </div>
 
                 <div class="form-group">

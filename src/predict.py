@@ -35,9 +35,8 @@ def preprocess_input(claim_dict: dict, category: str, label_encoders: dict, scal
     """Transform raw dictionary into model-ready dataframe for specific category."""
     df = pd.DataFrame([claim_dict])
 
-    # Convert Monetary fields from INR to USD
+    # Convert Monetary fields from INR to USD (Health only, Vehicle trained on INR)
     monetary_cols = {
-        "vehicle": ['total_claim_amount', 'injury_claim', 'property_claim', 'vehicle_claim', 'policy_annual_premium', 'policy_deductable', 'umbrella_limit'],
         "health": ['Claim_Amount', 'Deductible_Amount', 'CoPay_Amount']
     }
     for col in monetary_cols.get(category, []):

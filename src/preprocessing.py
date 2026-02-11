@@ -12,14 +12,24 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import config
 
 
-def load_data(category: str) -> pd.DataFrame:
-    """Load raw dataset for a specific category."""
+def load_data(category: str, include_augmented=False) -> pd.DataFrame:
+    """Load raw dataset and optionally the augmented synthetic data."""
     path = config.get_raw_path(category)
     if not os.path.exists(path):
         raise FileNotFoundError(f"Dataset not found for {category}: {path}")
     
     df = pd.read_csv(path)
-    print(f"[✓] Loaded {category} data: {len(df)} rows, {len(df.columns)} columns")
+    
+    if include_augmented:
+        aug_path = os.path.join(config.get_processed_dir(category), "augmented_data.csv")
+        if os.path.exists(aug_path):
+            df_aug = pd.read_csv(aug_path)
+            # Align augmented data with raw data columns
+            df_aug = df_aug[df.columns]
+            df = pd.concat([df, df_aug], ignore_index=True)
+            print(f"[+] Combined with augmented data: {len(df_aug)} rows added")
+    
+    print(f"[✓] Data Loaded: {len(df)} total rows")
     return df
 
 
@@ -134,7 +144,8 @@ if __name__ == "__main__":
 
     cat = args.category
     
-    df = load_data(cat)
+    # In CLI mode, we usually want to include augmented data if it exists for full retraining
+    df = load_data(cat, include_augmented=True)
     df = clean_data(df, cat)
     df = engineer_features(df, cat)
     X, y, encoders, scaler, features, num_cols = encode_and_scale(df, cat)
