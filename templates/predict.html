@@ -78,39 +78,43 @@
                 <div class="form-group">
                     <label for="total_claim_amount">Total Claim Amount (₹)</label>
                     <input type="number" id="total_claim_amount" name="total_claim_amount" placeholder="e.g. 500000"
-                        required>
+                        min="0" max="100000000" required>
                 </div>
 
                 <div class="form-group">
                     <label for="injury_claim">Injury Claim Amount (₹)</label>
-                    <input type="number" id="injury_claim" name="injury_claim" placeholder="e.g. 50000" required>
+                    <input type="number" id="injury_claim" name="injury_claim" placeholder="e.g. 50000" min="0"
+                        max="10000000" required>
                 </div>
 
                 <div class="form-group">
                     <label for="property_claim">Property Claim Amount (₹)</label>
-                    <input type="number" id="property_claim" name="property_claim" placeholder="e.g. 50000" required>
+                    <input type="number" id="property_claim" name="property_claim" placeholder="e.g. 50000" min="0"
+                        max="10000000" required>
                 </div>
 
                 <div class="form-group">
                     <label for="vehicle_claim">Vehicle Claim Amount (₹)</label>
-                    <input type="number" id="vehicle_claim" name="vehicle_claim" placeholder="e.g. 400000" required>
+                    <input type="number" id="vehicle_claim" name="vehicle_claim" placeholder="e.g. 400000" min="0"
+                        max="10000000" required>
                 </div>
 
                 <div class="form-group">
                     <label for="policy_annual_premium">Annual Premium (₹)</label>
                     <input type="number" id="policy_annual_premium" name="policy_annual_premium"
-                        placeholder="e.g. 15000" required>
+                        placeholder="e.g. 15000" min="0" max="10000000" required>
                 </div>
 
                 <div class="form-group">
                     <label for="policy_deductable">Policy Deductible (₹)</label>
                     <input type="number" id="policy_deductable" name="policy_deductable" placeholder="e.g. 10000"
-                        required>
+                        min="0" max="1000000" required>
                 </div>
 
                 <div class="form-group">
                     <label for="umbrella_limit">Umbrella Limit (₹)</label>
-                    <input type="number" id="umbrella_limit" name="umbrella_limit" value="0" required>
+                    <input type="number" id="umbrella_limit" name="umbrella_limit" value="0" min="0" max="1000000000"
+                        required>
                 </div>
 
                 <div class="form-group">
