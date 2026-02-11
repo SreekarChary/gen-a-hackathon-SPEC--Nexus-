@@ -134,6 +134,15 @@ def predict_claim(claim_dict: dict, category=config.DEFAULT_CATEGORY, model_name
     risk_score = float(model.predict_proba(X)[0][1])
     
     threshold = config.CATEGORIES[category]["threshold"]
+    
+    # Normalize risk score so that threshold corresponds to 0.5 (for intuitive UI display)
+    if risk_score < threshold:
+        # Map [0, threshold] -> [0, 0.5]
+        normalized_score = risk_score * (0.5 / threshold) if threshold > 0 else 0
+    else:
+        # Map [threshold, 1] -> [0.5, 1]
+        normalized_score = 0.5 + (risk_score - threshold) * (0.5 / (1 - threshold)) if threshold < 1 else 1
+    
     verdict = "Fraudulent" if risk_score >= threshold else "Legitimate"
 
     # Explainability
@@ -152,7 +161,8 @@ def predict_claim(claim_dict: dict, category=config.DEFAULT_CATEGORY, model_name
 
     return {
         "verdict": verdict,
-        "risk_score": round(risk_score, 4),
+        "risk_score": round(normalized_score, 4), # Return normalized score for UI
+        "raw_risk_score": round(risk_score, 4),    # Keep raw score just in case
         "reasoning": reasoning,
         "top_features": top_feats,
     }
